@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Talmale | Data Science & ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(59, 130, 246, 0.1);
+        }
+        
+        .skill-pill {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4f46e5;
+        }
+        
+        .spark-visualization {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(79, 70, 229, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-thumbnail:hover::after {
+            opacity: 1;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .video-thumbnail:hover .play-icon {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">
+                    Amit Talmale
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-indigo-600 transition">About</a>
+                    <a href="#experience" class="text-slate-600 hover:text-indigo-600 transition">Experience</a>
+                    <a href="#projects" class="text-slate-600 hover:text-indigo-600 transition">Projects</a>
+                    <a href="#teaching" class="text-slate-600 hover:text-indigo-600 transition">Teaching</a>
+                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden text-xl" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        Hello, I'm <span class="gradient-text">Amit Talmale</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-slate-600 mb-6">
+                        Computer Science Student
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8">
+                        Specializing in real-time data analysis, distributed computing, and machine learning applications. 
+                        Currently at JKLU and IIT Ropar, building intelligent systems that understand human behavior.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-medium transition">
+                            View Projects
+                        </a>
+                        <a href="./Amit_Talmale.pdf" download class="px-6 py-3 border border-indigo-500 text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition" id="download-cv">
+                        Download CV
+                        </a>
+
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-indigo-100">
+                        <img src="./Profile_img.jpeg" 
+                             alt="Amit Talmale" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                About <span class="gradient-text">Me</span>
+            </h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-xl p-8 card-hover">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                        <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-indigo-100">
+                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Amit Talmale" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:pl-12">
+                        <h3 class="text-2xl font-bold mb-4">Data Science Researcher & Educator</h3>
+                        <p class="mb-4 text-slate-600">
+                            I'm passionate about developing Deep Learning and machine learning systems that can understand and interpret 
+                            human behavior through various modalities like video, motion trajectories, and speech patterns.
+                        </p>
+                        <p class="mb-6 text-slate-600">
+                            My work focuses on real-time data processing using Apache Spark and GraphX, with applications 
+                            in computer vision and behavioral analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <div class="px-4 py-2 rounded-full skill-pill">
+                                <i class="fas fa-server mr-2"></i> Deep Learning
+                            </div>
+                            <div class="px-4 py-2 rounded-full skill-pill">
+                                <i class="fas fa-project-diagram mr-2"></i> Gen AI
+                            </div>
+                            <div class="px-4 py-2 rounded-full skill-pill">
+                                <i class="fas fa-brain mr-2"></i> PySpark
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                Professional <span class="gradient-text">Journey</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline item 1 -->
+                <div class="relative pl-12 pb-12 border-l-2 border-indigo-200 timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Summer Intern</h3>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">May 2024 - July 2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-indigo-600 mb-3">IIT Ropar</h4>
+                        <p class="text-slate-600 mb-4">
+                            Worked on real-time data analysis and audio-gesture processing using TED Talk videos to study audience engagement. Developed systems to analyze speaker effectiveness by linking speech clarity and body language with viewer response. Gained hands-on experience in real-time systems, audio signal processing, and behavioral analytics.
+
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Librosa</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Real-time Analysis</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline item 2 -->
+                <div class="relative pl-12 pb-12 border-l-2 border-indigo-200 timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Teaching Assistant</h3>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">2024-Present</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-indigo-600 mb-3">JKLU</h4>
+                        <p class="text-slate-600 mb-4">
+                            Mentor students in data structures, algorithms. 
+                            Conduct lab sessions, grade assignments, and provide academic support 
+                            for courses in the Computer Science department.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Teaching</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Mentorship</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Data Structure and Algorithm and Python </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline item 3 -->
+                <div class="relative pl-12 border-l-2 border-indigo-200 timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Open Source Contributor</h3>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">Ongoing</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-indigo-600 mb-3">Various Projects</h4>
+                        <p class="text-slate-600 mb-4">
+                            Contribute to open-source projects related to distributed computing and machine learning. 
+                            Particularly interested in performance optimization for graph algorithms.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Open Source</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Machine Learning</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Problem Solving</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Visualization -->
+    <section class="py-12 bg-indigo-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-8 text-center">Technical Expertise</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Spark Visualization -->
+                    <div class="spark-visualization p-6 rounded-xl flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-bolt text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Deep Learning</h4>
+                        <div class="w-full bg-indigo-200 rounded-full h-2.5">
+                            <div class="bg-white h-2.5 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- GraphX Visualization -->
+                    <div class="spark-visualization p-6 rounded-xl flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-project-diagram text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Apache Spark</h4>
+                        <div class="w-full bg-indigo-200 rounded-full h-2.5">
+                            <div class="bg-white h-2.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- ML Visualization -->
+                    <div class="spark-visualization p-6 rounded-xl flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-brain text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Machine Learning</h4>
+                        <div class="w-full bg-indigo-200 rounded-full h-2.5">
+                            <div class="bg-white h-2.5 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- CV Visualization -->
+                    <div class="spark-visualization p-6 rounded-xl flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                            <i class="fas fa-eye text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Computer Vision</h4>
+                        <div class="w-full bg-indigo-200 rounded-full h-2.5">
+                            <div class="bg-white h-2.5 rounded-full" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">Python</div>
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">PySpark</div>
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">TensorFlow</div>
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">PyTorch</div>
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">OpenCV</div>
+                    <div class="px-4 py-2 rounded-full skill-pill text-center">Docker</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                Featured <span class="gradient-text">Projects</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="video-thumbnail h-48 bg-gradient-to-r from-indigo-100 to-purple-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-lips text-6xl text-indigo-400 opacity-70"></i>
+                        </div>
+                        <div class="play-icon">
+                            <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
+                                <i class="fas fa-play text-indigo-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">LipBuddy</h3>
+                        <p class="text-slate-600 mb-4">
+                            A lip-reading application that converts silent video of mouth movements into text using 
+                            deep learning models trained on viseme sequences.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Computer Vision</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">LSTM</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">PyTorch</span>
+                        </div>
+                        <a href="https://github.com/Amit9785/Text-to-image" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="video-thumbnail h-48 bg-gradient-to-r from-indigo-100 to-purple-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-users text-6xl text-indigo-400 opacity-70"></i>
+                        </div>
+                        <div class="play-icon">
+                            <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
+                                <i class="fas fa-play text-indigo-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Crowd Behavior Analysis</h3>
+                        <p class="text-slate-600 mb-4">
+                            Analyzing crowd movement patterns using motion trajectories and graph-based representations 
+                            to predict behavior in public spaces.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Optical Flow</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Co-Tracker</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Trajectory</span>
+                        </div>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm card-hover">
+                    <div class="video-thumbnail h-48 bg-gradient-to-r from-indigo-100 to-purple-100 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-film text-6xl text-indigo-400 opacity-70"></i>
+                        </div>
+                        <div class="play-icon">
+                            <div class="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
+                                <i class="fas fa-play text-indigo-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Text-to-Image Website</h3>
+                        <p class="text-slate-600 mb-4">
+                            This project is a web-based application that converts user-input text into images using OpenAI's powerful text-to-image generation API. Users can type in a prompt, and the app uses OpenAI’s image generation model (like DALL·E) to create a unique image based on the description. The website is designed with a simple and user-friendly interface, allowing real-time image generation and download functionality. Ideal for creative exploration, content creation, and visual storytelling.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">HTML/CSS</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Node JS</span>
+                            <span class="text-xs px-3 py-1 rounded-full bg-indigo-50 text-indigo-700">Open AI Api Key</span>
+                        </div>
+                        <a href="https://github.com/Amit9785/Lip_Reading" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/Amit9785/Lip_Reading" class="inline-flex items-center px-6 py-3 border border-indigo-500 text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition">
+                    <i class="fab fa-github mr-2"></i> View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching" class="py-20 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                Teaching Experience <span class="gradient-text"></span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Teaching Card -->
+                <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+                    <div class="w-16 h-16 mb-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Teaching Experience</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Conducted lab sessions for Data Structures and Algorithms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Assisted in Machine Learning course with practical implementations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Developed hands-on tutorials for distributed computing concepts</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Mentorship Card
+                <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+                    <div class="w-16 h-16 mb-6 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-hands-helping text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Academic Mentorship</h3>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Guided students through research projects in data science</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Mentored teams for hackathons and coding competitions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-indigo-500 mt-1 mr-2"></i>
+                            <span>Provided career guidance for students entering AI/ML fields</span>
+                        </li>
+                    </ul>
+                </div> -->
+            </div>
+            
+            <!-- Testimonials -->
+            <!-- <div class="mt-16 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-bold mb-8 text-center">Student Testimonials</h3>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Student" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Priya Sharma</h4>
+                            <p class="text-sm text-slate-500">Computer Science Student</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">
+                        "Amit's explanations of complex ML concepts were incredibly clear. His practical approach 
+                        to teaching helped me understand how algorithms work in real applications."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- LinkedIn Box -->
+                <a href="https://www.linkedin.com/in/amittalmale37/" class="bg-white p-6 rounded-xl shadow-sm card-hover flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white mb-4">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">LinkedIn</h3>
+                    <p class="text-slate-600 mb-4">Connect professionally and view my experience</p>
+                    <!-- <div class="text-blue-600 font-medium mt-auto">linkedin.com/in/amittalmale</div> -->
+                </a>
+                
+                <!-- Email Box -->
+                <a href="#" class="bg-white p-6 rounded-xl shadow-sm card-hover flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-indigo-600 flex items-center justify-center text-white mb-4">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-slate-600 mb-4">Send me a message directly to my inbox</p>
+                    <div class="text-indigo-600 font-medium mt-auto">skaamit9786@gmail.com</div>
+                </a>
+                
+                <!-- GitHub Box -->
+                <a href="https://github.com/Amit9785/" class="bg-white p-6 rounded-xl shadow-sm card-hover flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center text-white mb-4">
+                        <i class="fab fa-github text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">GitHub</h3>
+                    <p class="text-slate-600 mb-4">Explore my open-source projects and contributions</p>
+                    <div class="text-gray-700 font-medium mt-auto">github.com/Amit9785</div>
+                </a>
+            </div>
+            
+            <!-- Contact Form
+            <div class="mt-16 max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm card-hover">
+                <h3 class="text-2xl font-bold mb-6 text-center">Send Me a Message</h3>
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-medium transition">
+                        Send Message
+                    </button>
+                </form>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-xl font-bold gradient-text mb-4 md:mb-0">
+                    Amit Talmale
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/amittalmale37/" class="text-slate-500 hover:text-indigo-600 transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Amit9785/" class="text-slate-500 hover:text-indigo-600 transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <!-- <a href="#" class="text-slate-500 hover:text-indigo-600 transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-slate-500 hover:text-indigo-600 transition">
+                        <i class="fab fa-medium text-xl"></i>
+                    </a> -->
+                </div>
+            </div>
+            <div class="mt-6 text-center md:text-left text-slate-500 text-sm">
+                © 2024 Amit Talmale. Undergraduate Teaching Assistant at JKLU | Summer Intern at IIT Ropar.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            // Implement mobile menu toggle functionality
+            alert('Mobile menu would open here in a full implementation');
+        });
+
+        // CV download simulation
+        // document.getElementById('download-cv').addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     alert('In a real implementation, this would download Amit\'s CV');
+        // });
+
+        // Project video play buttons
+        document.querySelectorAll('.video-thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                alert('In a real implementation, this would play a project demo video');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent! (This is a demo - no actual message was sent)');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
